@@ -14,7 +14,7 @@ after_success:
   - docker build -t ryleysill/multi-server ./server
   - docker build -t ryleysill/multi-worker ./worker
 
-  - docker -u "$DOCKER_ID" -p "$DOCKER_PASSWORD"
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push ryleysill/multi-client
   - docker push ryleysill/multi-nginx
   - docker push ryleysill/multi-server
